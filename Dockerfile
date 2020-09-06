@@ -30,7 +30,7 @@ RUN $url = 'http://erlang.org/download/otp_win64_{0}.exe' -f $env:ERLANG_VERSION
     Write-Host ('Downloading {0} ...' -f $url); `
     Invoke-WebRequest $url -OutFile 'c:\otp.exe'; `
     `
-    Write-Host ('Installing OTP ...' -f $url); `
+    Write-Host 'Installing OTP ...'; `
     Start-Process 'c:\otp.exe' -ArgumentList '/S', ('/D={0}' -f $env:ERLANG_HOME) -NoNewWindow -Wait; `
     `
     Write-Host 'Cleanup OTP installation ...'; `
@@ -55,8 +55,8 @@ RUN $url = 'https://github.com/rabbitmq/rabbitmq-server/releases/download/v{0}/r
     Expand-Archive -Path 'c:\rabbit.zip' -DestinationPath C:\; `
     Move-Item "C:\rabbitmq_server-$env:RABBITMQ_VERSION" $env:RABBITMQ_HOME; `
     `
-	  Write-Host 'Cleanup RabbitMQ installation ...'; `
-	  Remove-Item rabbit.zip -Force
+    Write-Host 'Cleanup RabbitMQ installation ...'; `
+    Remove-Item rabbit.zip -Force
 
 #### FINAL IMAGE
 
