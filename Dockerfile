@@ -60,7 +60,7 @@ RUN $url = 'https://github.com/rabbitmq/rabbitmq-server/releases/download/v{0}/r
 
 #### FINAL IMAGE
 
-FROM mcr.microsoft.com/windows/nanoserver:1903
+FROM mcr.microsoft.com/windows/nanoserver:1809
 
 ARG ERLANG_VERSION
 ARG RABBITMQ_VERSION
