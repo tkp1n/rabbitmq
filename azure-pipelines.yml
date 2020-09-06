@@ -1,9 +1,10 @@
-# Docker
-# Build a Docker image 
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
-- master
+  tags:
+    include:
+    - '*'
+  branches:
+    exclude:
+    - '*'
 
 resources:
 - repo: self
@@ -26,3 +27,4 @@ stages:
         repository: 'tkp1n/rabbitmq'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
