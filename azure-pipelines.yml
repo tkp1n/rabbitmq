@@ -21,18 +21,8 @@ stages:
       vmImage: 'windows-latest'
     steps:
     - task: Docker@2
-      displayName: Build an image
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
-    - task: Docker@2
-      displayName: Push image
-      inputs:
-        containerRegistry: |
-          $(dockerHub)
-        repository: tkp1n/rabbitmq
-        command: push
-        tags: |
-          $(tag)
+        containerRegistry: 'Docker Hub (tkp1n)'
+        repository: 'tkp1n/rabbitmq'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
